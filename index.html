@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邢凡辰 | 3D场景艺术家</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand" data-zh="邢凡辰 | 3D场景艺术家" data-en="Fanchen Xing | 3D Environment Artist">邢凡辰 | 3D场景艺术家</div>
+  <nav class="main-nav">
+    <a href="index.html" class="active" data-zh="主页" data-en="Home">主页</a>
+    <a href="portfolio.html" data-zh="3D场景作品集" data-en="Portfolio">3D场景作品集</a>
+    <!-- <a href="practices.html" data-zh="日常练习" data-en="Practices">日常练习</a> -->
+    <a href="about.html" data-zh="关于我" data-en="About Me">关于我</a>
+    <button class="lang-toggle" type="button">EN</button>
+  </nav>
+  <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+
+  <!-- Hero: Demo Reel -->
+  <section class="full-bleed hero">
+    <img class="hero-media" src="images/hero-poster.jpg" alt="Demo Reel">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <div class="hero-title" data-zh="3D场景作品展示 2026" data-en="3D Environment Showcase 2026">3D场景作品展示 2026</div>
+      <button class="play-btn" id="playDemoReel" type="button" aria-label="播放视频" title="播放视频">
+        <span class="play-circle">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Portfolio teaser 1 -->
+  <section class="full-bleed teaser">
+    <img class="teaser-media" src="AssetLibrary/ValleyVillage_Cover.png" alt="山谷村落">
+    <div class="overlay"></div>
+    <div class="teaser-content">
+      <div class="teaser-title" data-zh="山谷村落" data-en="Valley Village">山谷村落</div>
+      <a class="btn-outline" href="valley-village.html" data-zh="了解更多" data-en="Learn More">了解更多</a>
+    </div>
+  </section>
+
+  <!-- Portfolio teaser 2 -->
+  <section class="full-bleed teaser">
+    <img class="teaser-media" src="AssetLibrary/FungiSwamp_Cover.png" alt="蘑菇沼泽">
+    <div class="overlay"></div>
+    <div class="teaser-content">
+      <div class="teaser-title" data-zh="蘑菇沼泽" data-en="Fungi Swamp">蘑菇沼泽</div>
+      <a class="btn-outline" href="fungi-swamp.html" data-zh="了解更多" data-en="Learn More">了解更多</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span data-zh="© 2026 邢凡辰 · 保留所有权利" data-en="© 2026 Fanchen Xing · All Rights Reserved">© 2026 邢凡辰 · 保留所有权利</span>
+</footer>
+
+<!-- Demo Reel video modal -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="close">&times;</button>
+    <video id="demoReelVideo" controls playsinline preload="none" poster="images/hero-poster.jpg">
+      <source src="AssetLibrary/DemoReel2026.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
