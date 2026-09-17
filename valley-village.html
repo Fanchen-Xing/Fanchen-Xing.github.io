@@ -5,24 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>山谷村落 | 邢凡辰</title>
 <link rel="stylesheet" href="css/style.css">
-</head>
+<link rel="stylesheet" href="css/navigation.css"></head>
 <body>
 
-<header class="site-header">
-  <div class="brand" data-zh="邢凡辰 | 3D场景艺术家" data-en="Fanchen Xing | 3D Environment Artist">邢凡辰 | 3D场景艺术家</div>
-  <nav class="main-nav">
-    <a href="index.html" data-zh="主页" data-en="Home">主页</a>
-    <a href="portfolio.html" class="active" data-zh="3D场景作品集" data-en="Portfolio">3D场景作品集</a>
-    <!-- <a href="practices.html" data-zh="日常练习" data-en="Practices">日常练习</a> -->
-    <a href="about.html" data-zh="关于我" data-en="About Me">关于我</a>
-    <button class="lang-toggle" type="button">EN</button>
-  </nav>
-  <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
-</header>
+<header id="fx-header" data-tone="dark"><div class="fx-header-inner"><a class="fx-brand" href="index.html"><strong>FANCHEN XING<span>邢凡辰</span></strong><small>ENVIRONMENT ART & PROCEDURAL DESIGN</small></a><div class="fx-actions"><nav id="fx-menu" aria-label="主导航 / Main navigation"><a href="index.html" data-zh="主页" data-en="Home">主页</a><a href="portfolio.html" aria-current="page" data-zh="作品集" data-en="Portfolio">作品集</a><a href="lab.html" data-zh="3D交互" data-en="3D Interaction">3D交互</a><a href="about.html" data-zh="关于我" data-en="About">关于我</a></nav><button class="lang-toggle fx-language" type="button" aria-label="切换语言 / Switch language">EN</button><button id="fx-menu-toggle" type="button" aria-controls="fx-menu" aria-expanded="false" aria-label="展开导航 / Toggle navigation"><span></span><span></span></button></div></div></header>
 
 <main>
 
-  <section class="page-hero" style="background-image:url('AssetLibrary/ValleyVillage_Cover.png');">
+  <section class="page-hero" style="background-image:url('AssetLibrary/ValleyVillage/ValleyVillage_Cover.png');">
     <div class="overlay"></div>
     <div class="page-hero-content">
       <div class="page-kicker" data-zh="作品集" data-en="PORTFOLIO">作品集</div>
@@ -42,23 +32,23 @@
       <iframe src="https://player.vimeo.com/video/1203161148" title="山谷村落" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>
 
-    <img src="AssetLibrary/ValleyVillage_P01.png" alt="山谷村落 P01">
-    <img src="AssetLibrary/ValleyVillage_P02.png" alt="山谷村落 P02">
-    <img src="AssetLibrary/ValleyVillage_P03.png" alt="山谷村落 P03">
-    <img src="AssetLibrary/ValleyVillage_P04.png" alt="山谷村落 P04">
+    <img src="AssetLibrary/ValleyVillage/ValleyVillage_P01.png" alt="山谷村落 P01">
+    <img src="AssetLibrary/ValleyVillage/ValleyVillage_P02.png" alt="山谷村落 P02">
+    <img src="AssetLibrary/ValleyVillage/ValleyVillage_P03.png" alt="山谷村落 P03">
+    <img src="AssetLibrary/ValleyVillage/ValleyVillage_P04.png" alt="山谷村落 P04">
 
     <div class="thumb-row">
-      <img src="AssetLibrary/ValleyVillage_P01.png" alt="山谷村落 P01 缩略图">
-      <img src="AssetLibrary/ValleyVillage_P02.png" alt="山谷村落 P02 缩略图">
-      <img src="AssetLibrary/ValleyVillage_P03.png" alt="山谷村落 P03 缩略图">
-      <img src="AssetLibrary/ValleyVillage_P04.png" alt="山谷村落 P04 缩略图">
+      <img src="AssetLibrary/ValleyVillage/ValleyVillage_P01.png" alt="山谷村落 P01 缩略图">
+      <img src="AssetLibrary/ValleyVillage/ValleyVillage_P02.png" alt="山谷村落 P02 缩略图">
+      <img src="AssetLibrary/ValleyVillage/ValleyVillage_P03.png" alt="山谷村落 P03 缩略图">
+      <img src="AssetLibrary/ValleyVillage/ValleyVillage_P04.png" alt="山谷村落 P04 缩略图">
     </div>
 
     <div class="image-reel" data-duration="1000">
       <div class="reel-stage">
-        <img class="reel-slide active" src="AssetLibrary/ValleyVillage_P05_Slider01.png" alt="山谷村落 P05">
-        <img class="reel-slide" src="AssetLibrary/ValleyVillage_P05_Slider02.png" alt="山谷村落 P05">
-        <img class="reel-slide" src="AssetLibrary/ValleyVillage_P05_Slider03.png" alt="山谷村落 P05">
+        <img class="reel-slide active" src="AssetLibrary/ValleyVillage/ValleyVillage_P05_Slider01.png" alt="山谷村落 P05">
+        <img class="reel-slide" src="AssetLibrary/ValleyVillage/ValleyVillage_P05_Slider02.png" alt="山谷村落 P05">
+        <img class="reel-slide" src="AssetLibrary/ValleyVillage/ValleyVillage_P05_Slider03.png" alt="山谷村落 P05">
       </div>
       <div class="reel-track"></div>
     </div>
@@ -72,13 +62,13 @@
       <p data-zh="这个程序化房屋生成工具基于一套模块化建筑资产库构建，通过组合房间与露台结构来生成木屋，可通过参数调整其尺寸、楼层数量、整体形状和露台形状，可在 Unreal Engine 中快速生成多样化的房屋设计。" data-en="This procedural house generator is built on a library of modular architectural assets. It assembles rooms and balcony structures into wooden houses, with parameters to adjust size, floor count, overall shape, and balcony shape — enabling fast generation of varied house designs directly in Unreal Engine.">这个程序化房屋生成工具基于一套模块化建筑资产库构建，通过组合房间与露台结构来生成木屋，可通过参数调整其尺寸、楼层数量、整体形状和露台形状，可在 Unreal Engine 中快速生成多样化的房屋设计。</p>
       <p class="step-spaced" data-zh="1. 使用模块化资产创建资产库" data-en="1. Build the asset library from modular components">1. 使用模块化资产创建资产库</p>
     </div>
-    <img src="AssetLibrary/VallyeVillage_P06.png" alt="山谷村落 P06">
+    <img src="AssetLibrary/ValleyVillage/VallyeVillage_P06.png" alt="山谷村落 P06">
 
     <div class="gallery-text">
       <p data-zh="2. 使用可复用的“楼层Subnet”和“屋顶Subnet”构建不同的建筑模块。" data-en="2. Assemble building modules using reusable Floor and Roof subnetworks.">2. 使用可复用的“楼层Subnet”和“屋顶Subnet”构建不同的建筑模块。</p>
     </div>
     <div class="image-annotated">
-      <img src="AssetLibrary/VallyeVillage_P07.png" alt="山谷村落 P07">
+      <img src="AssetLibrary/ValleyVillage/VallyeVillage_P07.png" alt="山谷村落 P07">
       <span class="img-label" style="left:6.8%; top:2%;" data-zh="主屋" data-en="Main House">主屋</span>
       <span class="img-label" style="left:34.3%; top:2%;" data-zh="前厅" data-en="Front Hall">前厅</span>
       <span class="img-label" style="left:58.3%; top:2%;" data-zh="左室" data-en="Left Room">左室</span>
@@ -89,7 +79,7 @@
     <div class="gallery-text">
       <p data-zh="3. 组合房间和露台，设置材质，创建并连接调整参数" data-en="3. Combine rooms and balconies, assign materials, and wire up adjustable parameters.">3. 组合房间和露台，设置材质，创建并连接调整参数</p>
     </div>
-    <img src="AssetLibrary/VallyeVillage_P08.png" alt="山谷村落 P08">
+    <img src="AssetLibrary/ValleyVillage/VallyeVillage_P08.png" alt="山谷村落 P08">
 
     <div class="gallery-text">
       <h3 class="gallery-heading" data-zh="楼层Subnet" data-en="Floor Subnetwork">楼层Subnet</h3>
@@ -101,7 +91,7 @@
         <li data-zh="结构支撑生成" data-en="Generate structural supports">结构支撑生成</li>
       </ol>
     </div>
-    <img src="AssetLibrary/VallyeVillage_P09.png" alt="山谷村落 P09">
+    <img src="AssetLibrary/ValleyVillage/VallyeVillage_P09.png" alt="山谷村落 P09">
 
     <div class="gallery-text">
       <h3 class="gallery-heading" data-zh="屋顶Subnet" data-en="Roof Subnetwork">屋顶Subnet</h3>
@@ -113,7 +103,7 @@
         <li data-zh="晶格调整形状" data-en="Adjust shape with a lattice">晶格调整形状</li>
       </ol>
     </div>
-    <img src="AssetLibrary/VallyeVillage_P10.png" alt="山谷村落 P10">
+    <img src="AssetLibrary/ValleyVillage/VallyeVillage_P10.png" alt="山谷村落 P10">
 
     <div class="gallery-text">
       <h3 class="gallery-heading" data-zh="悬索桥生成工具" data-en="Suspension Bridge Generator">悬索桥生成工具</h3>
@@ -127,19 +117,19 @@
         <li data-zh="使用 Vellum 进行模拟" data-en="Simulate with Vellum">使用 Vellum 进行模拟</li>
       </ol>
     </div>
-    <img src="AssetLibrary/VallyeVillage_P11.png" alt="山谷村落 P11">
+    <img src="AssetLibrary/ValleyVillage/VallyeVillage_P11.png" alt="山谷村落 P11">
 
     <div class="gallery-text">
       <h3 class="gallery-heading" data-zh="山体植被蓝图" data-en="Mountain Vegetation Blueprint">山体植被蓝图</h3>
       <p data-zh="山体植被蓝图结合了 Unreal Engine PCG 与可调节的蓝图参数，可以在任意选定的山体网格模型上采样点并自动散布树木，同时提供直观的美术控制参数，例如植被密度、树木尺寸、和分布衰减。" data-en="The mountain vegetation blueprint combines Unreal Engine's PCG framework with adjustable Blueprint parameters, sampling points across any selected mountain mesh to automatically scatter trees — with intuitive art-direction controls for density, tree size, and falloff.">山体植被蓝图结合了 Unreal Engine PCG 与可调节的蓝图参数，可以在任意选定的山体网格模型上采样点并自动散布树木，同时提供直观的美术控制参数，例如植被密度、树木尺寸、和分布衰减。</p>
     </div>
-    <img src="AssetLibrary/VallyeVillage_P12.png" alt="山谷村落 P12">
+    <img src="AssetLibrary/ValleyVillage/VallyeVillage_P12.png" alt="山谷村落 P12">
 
     <div class="gallery-text">
       <h3 class="gallery-heading" data-zh="参考图和概念设计" data-en="References and Concept Art">参考图和概念设计</h3>
     </div>
     <div class="image-annotated">
-      <img src="AssetLibrary/VallyeVillage_P13.png" alt="山谷村落 P13">
+      <img src="AssetLibrary/ValleyVillage/VallyeVillage_P13.png" alt="山谷村落 P13">
       <span class="img-label" style="left:18%; top:90%;" data-zh="木屋参考图" data-en="References of wood hubs">木屋参考图</span>
       <span class="img-label" style="left:52%; top:90%;" data-zh="Midjourney概念设计" data-en="Concept arts by Midjourney">Midjourney概念设计</span>
       <span class="img-label" style="left:86%; top:90%;" data-zh="张家界照片参考" data-en="Photos of zhangjiajie">张家界照片参考</span>
@@ -158,5 +148,5 @@
 </footer>
 
 <script src="js/script.js"></script>
-</body>
+<script src="js/navigation.js"></script></body>
 </html>
