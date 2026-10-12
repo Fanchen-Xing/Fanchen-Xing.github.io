@@ -60,19 +60,23 @@
     var modal = document.getElementById('videoModal');
     var backdrop = document.getElementById('videoModalBackdrop');
     var closeBtn = document.getElementById('videoModalClose');
-    var video = document.getElementById('demoReelVideo');
+    var video = document.getElementById('demoReelFrame');
 
     if (playBtn && modal && video){
       var openModal = function(){
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
-        video.currentTime = 0;
-        video.play();
+        var f = document.createElement('iframe');
+        f.src = 'https://player.vimeo.com/video/' + video.getAttribute('data-vimeo') + '?autoplay=1&title=0&byline=0&portrait=0';
+        f.allow = 'autoplay; fullscreen; picture-in-picture';
+        f.setAttribute('allowfullscreen', '');
+        video.innerHTML = '';
+        video.appendChild(f);
       };
       var closeModal = function(){
         modal.classList.remove('open');
         document.body.style.overflow = '';
-        video.pause();
+        video.innerHTML = '';
       };
       playBtn.addEventListener('click', openModal);
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -84,6 +88,21 @@
 
     // Image reel: segmented, draggable, crossfade slider
     document.querySelectorAll('.image-reel').forEach(initImageReel);
+
+    // Vimeo facade: show poster + play button, load the player only on click
+    document.querySelectorAll('.video-facade').forEach(function(box){
+      box.addEventListener('click', function(){
+        var id = box.getAttribute('data-vimeo');
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0';
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        iframe.setAttribute('allowfullscreen', '');
+        box.innerHTML = '';
+        box.classList.remove('video-facade');
+        box.style.backgroundImage = 'none';
+        box.appendChild(iframe);
+      }, { once: true });
+    });
   });
 
   function initImageReel(reel){
