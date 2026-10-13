@@ -5,10 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3D场景作品集 | 邢凡辰</title>
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/navigation.css"></head>
+</head>
 <body>
 
-<header id="fx-header" data-tone="dark"><div class="fx-header-inner"><a class="fx-brand" href="index.html"><strong>FANCHEN XING<span>邢凡辰</span></strong><small>ENVIRONMENT ART & PROCEDURAL DESIGN</small></a><div class="fx-actions"><nav id="fx-menu" aria-label="主导航 / Main navigation"><a href="index.html" data-zh="主页" data-en="Home">主页</a><a href="portfolio.html" aria-current="page" data-zh="作品集" data-en="Portfolio">作品集</a><a href="lab.html" data-zh="3D交互" data-en="3D Interaction">3D交互</a><a href="about.html" data-zh="关于我" data-en="About">关于我</a></nav><button class="lang-toggle fx-language" type="button" aria-label="切换语言 / Switch language">EN</button><button id="fx-menu-toggle" type="button" aria-controls="fx-menu" aria-expanded="false" aria-label="展开导航 / Toggle navigation"><span></span><span></span></button></div></div></header>
+<header class="site-header">
+  <div class="brand" data-zh="邢凡辰 | 3D场景艺术家" data-en="Fanchen Xing | 3D Environment Artist">邢凡辰 | 3D场景艺术家</div>
+  <nav class="main-nav">
+    <a href="index.html" data-zh="主页" data-en="Home">主页</a>
+    <a href="portfolio.html" class="active" data-zh="3D场景作品集" data-en="Portfolio">3D场景作品集</a>
+    <!-- <a href="practices.html" data-zh="日常练习" data-en="Practices">日常练习</a> -->
+    <a href="about.html" data-zh="关于我" data-en="About Me">关于我</a>
+    <button class="lang-toggle" type="button">EN</button>
+  </nav>
+  <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+</header>
 
 <main>
 
@@ -22,6 +32,18 @@
 
   <section class="gallery-section">
     <div class="works-list">
+      <a class="work-card" href="highlands-in-gold.html" style="background-image:url('AssetLibrary/HighlandsInGold/assets/CAM1.png');">
+        <div class="work-overlay"></div>
+        <div class="work-content">
+          <div class="work-title" data-zh="高原秋境" data-en="Highlands in Gold">高原秋境</div>
+          <div class="work-sub" data-zh="开放世界 · PCG生态系统" data-en="Open World · PCG Ecosystem">开放世界 · PCG生态系统</div>
+          <span class="btn-pill">
+            <span data-zh="了解更多" data-en="Learn More">了解更多</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+
 
       <a class="work-card" href="valley-village.html" style="background-image:url('AssetLibrary/ValleyVillage/ValleyVillage_Cover.png');">
         <div class="work-overlay"></div>
@@ -62,6 +84,7 @@
 -->
 
 <a class="work-card" href="seaside/index.html" style="background-image:url('seaside/assets/town-retro.png');"><div class="work-overlay"></div><div class="work-content"><div class="work-title" data-zh="海岸工坊" data-en="Seaside Systems">海岸工坊</div><div class="work-sub" data-zh="程序化街区 · 模块规则 · 交互式视觉开发" data-en="Procedural Towns · Modular Rules · Interactive Visual Development">程序化街区 · 模块规则 · 交互式视觉开发</div><span class="btn-pill" data-zh="了解更多 →" data-en="Learn More →">了解更多 →</span></div></a>
+
     </div>
   </section>
 
@@ -72,5 +95,5 @@
 </footer>
 
 <script src="js/script.js"></script>
-<script src="js/navigation.js"></script></body>
+</body>
 </html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="高原秋境：以秋季高原生态为主题的植被环境作品，展示森林、灌木、草花与三层植物簇的景观层次及 PCG 生成流程。">
+  <meta name="theme-color" content="#141315">
+  <title>高原秋境 — 植被环境与 PCG 系统</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="media.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#system">跳至系统说明</a>
+<header class="site_header">
+  <a class="wordmark" href="#top">WORLD<span>PCG</span></a>
+  <nav aria-label="主要导航"><a href="#work">01 作品</a><a href="#system">02 系统</a><a href="#development">03 开发</a></nav>
+</header>
+<main id="top">
+  <section id="work" class="work section">
+    <p class="eyebrow">UNREAL ENGINE · PROCEDURAL ENVIRONMENT</p>
+    <h1>高原秋境</h1>
+    <div class="work_block work_intro">
+      <h2>作品介绍</h2>
+      <p class="intro">《高原秋境》是一个以秋季高原生态为主题的植被环境项目。场景围绕雪山下的林地、灌丛与草甸展开，通过树木秋色、草花斑块和植被疏密变化，呈现高原入秋时的景观层次。地形和曲线提供空间边界，森林、灌木、草地与村庄分别组织生成逻辑，再通过遮罩传递彼此的占用范围。</p>
+      <p class="intro">作品重点是让不同尺度的内容形成空间联系：远景由地形与树林建立层次，中景由河岸、灌木和聚落补充结构，近景由草花与局部植物簇丰富细节。各生成图保留独立的调节入口，便于调整植被组合与分布。</p>
+    </div>
+    <div class="work_block">
+    <h2>作品展示</h2>
+    <figure class="media hero_media" data-media="showreel">
+      <a class="video_cover" href="https://vimeo.com/1235311184" target="_blank" rel="noopener" aria-label="播放高原秋境展示视频"><img src="assets/VideoCover.png" alt="高原秋境展示视频封面"><span class="video_play" aria-hidden="true">▶</span></a>
+      <figcaption><a href="https://vimeo.com/1235311184" target="_blank" rel="noopener">在 Vimeo 观看</a></figcaption>
+    </figure>
+    </div>
+    <div class="work_block showcase_gallery">
+      <h2>展示图</h2>
+      <figure class="media" data-media="overview"><div class="placeholder"><strong>CAM1</strong></div></figure>
+      <figure class="media" data-media="detail"><div class="placeholder"><strong>CAM2</strong></div></figure>
+      <figure class="media" data-media="cam3"><div class="placeholder"><strong>CAM3</strong></div></figure>
+      <figure class="media" data-media="cam4"><div class="placeholder"><strong>CAM4</strong></div></figure>
+      <figure class="media" data-media="cam5"><div class="placeholder"><strong>CAM5</strong></div></figure>
+    </div>
+  </section>
+
+  <section id="system" class="section system">
+    <header class="section_heading"><h2>PCG 系统</h2></header>
+    <nav class="contents" aria-label="系统章节"><a href="#architecture">系统架构</a><a href="#main_graph">主图</a><a href="#forest">森林与灌木</a><a href="#clusters">三层簇</a><a href="#grass">草地分布</a><a href="#village">村庄生成</a></nav>
+
+    <article id="architecture" class="chapter">
+      <h3>系统架构</h3>
+      <p>主图、草地图、成簇系统与村庄系统通过子图复用和空间遮罩联动：成簇系统辅助灌木生成，主图输出树灌 Mask 供草地规避，村庄道路 Mask 为植被规避与沿路分布提供依据。河岸生成与沿路生成分别保留在主图和草地图内部，各生成模块以一个节点概括。</p>
+      <figure class="diagram"><a href="assets/SystemArchitecture.png" target="_blank" aria-label="打开完整系统架构图"><img src="assets/SystemArchitecture.png" alt="四个主要系统及联动：成簇系统通过子图复用辅助主图的灌木生成；主图树灌 Mask 传给草地图规避；村庄道路 Mask 联动主图和草地图。实线表示内部流程，彩色虚线表示跨系统关系。"></a><figcaption>系统架构与联动关系 · 点击查看大图</figcaption></figure>
+    </article>
+
+    <article id="main_graph" class="chapter">
+      <h3>主图</h3>
+      <p>主图从地形采样出发，通过道路与河流遮罩筛选植被范围，依次组织森林、灌木生成，并汇总树灌占用范围供草地图规避。图内还包含河岸生成分支，按水域距离和坡度限定分布，使岩石朝向随河道变化，补充岸边岩石与植物。</p>
+      <figure class="media graph_media" data-media="main_graph"><div class="placeholder"><strong>主图</strong></div><figcaption>主图：森林、灌木、河岸生成与 Mask 的连接关系</figcaption></figure>
+    </article>
+
+    <article id="forest" class="chapter">
+      <h3>森林与灌木</h3>
+      <p>森林先按高度、坡度与噪声划分树种区域，再独立控制各区密度；灌木规避树木后，以局部点网格和成簇子图补充林下层次。树木与灌木的占用范围合并为 Mask，供草地图规避。</p>
+      <figure class="media graph_media" data-media="forest_graph"><div class="placeholder"><strong>待补截图 · 森林</strong><code>assets/GraphForest.png</code></div><figcaption>森林：噪声分区与树种密度</figcaption></figure>
+      <figure class="media graph_media" data-media="shrub_graph"><div class="placeholder"><strong>待补截图 · 灌木</strong><code>assets/GraphShrubs.png</code></div><figcaption>灌木：局部分布与成簇子图</figcaption></figure>
+    </article>
+
+    <article id="clusters" class="chapter">
+      <h3>三层簇</h3>
+      <p>成簇图围绕中心点生成核心、中层和外层植物，再逐株贴地，形成一小片生态。一个 Palette 统一控制三层形状、植物组合与密度，各物种独立筛选；既可单独制作近景，也可作为子图在上游采样点上生成。</p>
+      <figure class="media graph_media" data-media="cluster_graph"><div class="placeholder"><strong>待补截图 · 成簇图</strong><code>assets/GraphCluster.png</code></div><figcaption>成簇图：径向分层、植物筛选与贴地</figcaption></figure>
+      <figure class="media graph_media" data-media="palette"><div class="placeholder"><strong>待补截图 · Palette</strong><code>assets/Palette.png</code></div><figcaption>Palette：三层形状与植物配置</figcaption></figure>
+    </article>
+
+    <article id="grass" class="chapter">
+      <h3>草地分布</h3>
+      <p>草地图规避道路、水域和树灌 Mask 后，先用噪声控制草地与空缺，再在保留区域铺设局部点网格、扰动并贴地。第二层噪声组织草花斑块，结合地形属性和坡度筛选，使地表分布保留疏密变化。图内的沿路生成分支读取地形道路与村庄道路 Mask，以距离带限定范围，补充道路附近的细节。</p>
+      <figure class="media graph_media" data-media="grass_graph"><div class="placeholder"><strong>待补截图 · 草地</strong><code>assets/GraphGrass.png</code></div><figcaption>草地：空缺控制与草花斑块</figcaption></figure>
+      <figure class="media graph_media" data-media="grass_distribution"><div class="placeholder"><strong>草地分布</strong></div><figcaption>草地：草花斑块分布可视化</figcaption></figure>
+    </article>
+
+    <article id="village" class="chapter">
+      <h3>村庄生成</h3>
+      <p><strong>村庄模块由 AI 全权负责技术实现。</strong>我负责提出生成规则、提供布局参考并反馈修改意见；AI 将需求拆解为蓝图、PCG 图与可复用子图，完成搭建、调试和迭代。</p>
+      <p>我给出的规则是：用闭合 Spline 圈定村庄范围，通过分区数量和 Seed 调整布局；大地块按面积继续细分，分区边界形成主次道路。房屋需要适配现有资产、避开过陡地面，并形成中心密、外围疏的分布；主房屋、马棚和装饰分开组织，兼顾多户院落与独户小院。</p>
+      <p>AI 采用递归空间切分组织地块，组合 PCG Primitives 完成区域筛选、退让、填充和占地去重，再通过射线贴地与坡度筛选放置建筑。院落从可用地面中扣除房屋占地、裁出门洞，调用独立的 PCG_Fence 子图沿 Spline 排布石墙或木栅栏。道路最终采用 Spline Mesh，并提供道路 Mask 与植被系统联动。</p>
+      <p>迭代从“分区、道路、房屋”的基础版本开始。我随后提出道路更平滑蜿蜒、缩小房屋与院落间距、围墙只围住宅小院、支持可选院门，并暴露整体朝向、基础密度和向外衰减参数。针对密度调高后仍过稀的问题，AI 调整了按房型占地填充及道路退让逻辑；马棚也从固定数量改为随区域面积分配。每轮根据生成结果继续反馈、修改和复测，同时按我的要求整理节点分区与注释，逐步形成可调节的村庄模块。</p>
+      <figure class="media graph_media" data-media="village_graph"><div class="placeholder"><strong>待补截图 · 村庄</strong><code>assets/GraphVillage.png</code></div><figcaption>村庄：地块切分与建筑分布</figcaption></figure>
+      <figure class="media graph_media" data-media="fence_graph"><div class="placeholder"><strong>村庄与围栏</strong></div><figcaption>村庄生成效果与 Fence 围栏子图</figcaption></figure>
+    </article>
+  </section>
+  <section id="development" class="section development">
+    <header class="section_heading"><h2>开发流程</h2></header>
+    <article id="ai_assistance" class="chapter">
+      <h3>AI 辅助</h3>
+      <p>制作过程中，我通过规则描述、参考图与实际生成结果向 AI 提出需求，让 AI 辅助实现部分 PCG Primitive 功能、整理节点和注释、排查连线与参数问题，减少重复操作和调试时间。植被部分以辅助实现和修正为主；村庄模块则由 AI 独立承担技术实现，我负责规则、视觉要求和迭代反馈。整体采用“提出规则 → 实现 → 查看结果 → 反馈修改 → 复测”的开发方式。</p>
+    </article>
+    <article id="performance" class="chapter">
+      <h3>性能</h3>
+      <p>性能控制主要围绕生成数量与可见范围展开：通过分层密度、空间遮罩和坡度筛选减少无效分布，草地按组设置距离剔除，并保留开关以便比较远景覆盖效果。调整时兼顾近景细节和远景密度，避免所有区域都使用同样的植被数量。</p>
+      <p>实测 3000 × 3000 米区域内，Main 生成的树林、灌木和河岸内容共计 751,837 个实例；300 × 300 米区域内，Grass1 生成的草地内容共计 248,088 个实例。实际观察的生成时间约为 5–7 秒。</p>
+    </article>
+    <article id="assets_references" class="chapter">
+      <h3>资产与参考</h3>
+      <p>Landscape 地形使用 Gaea 制作，其余场景资产来自 Fab 商城。本项目的制作重点是秋季高原植被环境的组织、场景整合与 PCG 生成规则。</p>
+      <figure class="media reference_media" data-media="reference"><div class="placeholder"><strong>参考图</strong></div></figure>
+    </article>
+  </section>
+</main>
+<footer><span>高原秋境 / 植被环境与 PCG 系统</span><span>依据 L_WorldPCG 当前图结构 · 2026.10.10</span></footer>
+</body>
+</html>
