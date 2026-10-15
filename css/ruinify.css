@@ -1,0 +1,8 @@
+/* RUINIFY: only the image slots and bullet lists; layout comes from the shared project-page styles. */
+.doc-fig{width:100%}
+.doc-fig img{width:100%;height:auto;display:block}
+.doc-ph{min-height:300px;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:var(--text-dim)}
+.doc-fig.has_media .doc-ph{display:none}
+.gallery-text ul{color:var(--text-dim);font-size:1rem;line-height:1.9;padding-left:22px;margin-top:6px}
+.gallery-text ul li{margin-bottom:8px;text-align:justify;text-justify:inter-character}
+.gallery-text p+ul{margin-top:10px}

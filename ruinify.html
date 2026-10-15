@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUINIFY | 邢凡辰</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/ruinify.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand" data-zh="邢凡辰 | 3D场景艺术家" data-en="Fanchen Xing | 3D Environment Artist">邢凡辰 | 3D场景艺术家</div>
+  <nav class="main-nav">
+    <a href="index.html" data-zh="主页" data-en="Home">主页</a>
+    <a href="portfolio.html" class="active" data-zh="3D场景作品集" data-en="Portfolio">3D场景作品集</a>
+    <!-- <a href="practices.html" data-zh="日常练习" data-en="Practices">日常练习</a> -->
+    <a href="about.html" data-zh="关于我" data-en="About Me">关于我</a>
+    <button class="lang-toggle" type="button">EN</button>
+  </nav>
+  <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+
+  <section class="page-hero" style="background-image:url('AssetLibrary/Ruinify/Ruinify_01.jpg');">
+    <div class="overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-kicker" data-zh="作品集" data-en="PORTFOLIO">作品集</div>
+      <h1 class="page-title">RUINIFY</h1>
+      <p class="page-quote" data-zh="将石质建筑的破损拆成三个可独立控制、连续叠加的模块——结构断裂、区域缺损与表面风化，并通过 Houdini Engine 接入 Unreal Engine。" data-en="A Houdini tool that splits stone-architecture damage into three independently controlled, stackable modules — structural fracture, regional loss and surface weathering — and brings them into Unreal Engine through Houdini Engine.">将石质建筑的破损拆成三个可独立控制、连续叠加的模块——结构断裂、区域缺损与表面风化，并通过 Houdini Engine 接入 Unreal Engine。</p>
+    </div>
+  </section>
+
+  <section class="project-detail">
+    <p data-zh="RUINIFY 是面向环境资产制作的 Houdini 程序化工具。石质建筑的破损同时包含主体断裂、局部缺失和细小侵蚀，只用一种噪声很难分别控制；因此它把这三种尺度拆开，每层可独立启用，先定大形，再逐步增加细节。" data-en="RUINIFY is a procedural Houdini tool for environment asset production. Damage on stone architecture combines large fractures, local material loss and fine erosion, which a single noise can’t control separately — so the tool splits the three scales apart, each layer independently switchable: lock the large shape first, then add detail.">RUINIFY 是面向环境资产制作的 Houdini 程序化工具。石质建筑的破损同时包含主体断裂、局部缺失和细小侵蚀，只用一种噪声很难分别控制；因此它把这三种尺度拆开，每层可独立启用，先定大形，再逐步增加细节。</p>
+    <p data-zh="技术栈：Houdini SOP / VEX / Python、OpenVDB、Houdini Engine、Unreal Engine Python 集成。目前为内部开发原型。" data-en="Tech: Houdini SOP / VEX / Python, OpenVDB, Houdini Engine, Unreal Engine Python integration. Currently an internal development prototype.">技术栈：Houdini SOP / VEX / Python、OpenVDB、Houdini Engine、Unreal Engine Python 集成。目前为内部开发原型。</p>
+  </section>
+
+  <div class="project-gallery">
+
+    <div class="doc-fig" data-img="AssetLibrary/Ruinify/Ruinify_01.jpg"><div class="doc-ph"><strong data-zh="项目主视觉" data-en="Key Visual">项目主视觉</strong></div></div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="整体流程" data-en="Pipeline">整体流程</h3>
+      <p data-zh="三个模块各有独立开关，可以先定大形，再逐层加细节：" data-en="Three modules, each with its own switch — lock the large shape first, then layer in detail:">三个模块各有独立开关，可以先定大形，再逐层加细节：</p>
+      <ul><li data-zh="Fracture：决定构件如何断开" data-en="Fracture: how the piece breaks apart">Fracture：决定构件如何断开</li><li data-zh="Large Damage：决定哪里被侵蚀、侵蚀多深" data-en="Large Damage: where material is lost, and how deep">Large Damage：决定哪里被侵蚀、侵蚀多深</li><li data-zh="Edge Damage：打破规则边缘，加入表面起伏" data-en="Edge Damage: breaks up regular edges and adds surface variation">Edge Damage：打破规则边缘，加入表面起伏</li><li data-zh="输出：新增断面 UV 与材质，按连通块独立输出 Static Mesh" data-en="Output: UVs and materials for new faces, then each connected piece exported as its own Static Mesh">输出：新增断面 UV 与材质，按连通块独立输出 Static Mesh</li></ul>
+    </div>
+    <div class="doc-fig" data-img="AssetLibrary/Ruinify/Ruinify_02.png"><div class="doc-ph"><strong data-zh="三个模块与整体节点网络" data-en="The three modules and the overall node network">三个模块与整体节点网络</strong></div></div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="Fracture 结构断裂" data-en="Fracture">Fracture 结构断裂</h3>
+      <p data-zh="预览与真实破碎共用同一组散点：预览只按最近种子点给原有面着色，确认之后才把同一组点送入 RBD Material Fracture 真正切割。" data-en="Preview and real fracture share one set of scatter points: the preview only colors existing faces by nearest seed, and the same points feed RBD Material Fracture only after confirmation.">预览与真实破碎共用同一组散点：预览只按最近种子点给原有面着色，确认之后才把同一组点送入 RBD Material Fracture 真正切割。</p>
+      <ul><li data-zh="难点：选形阶段不能每次都等完整断裂，又不能让预览与最终结果脱节。" data-en="Challenge: shape selection can’t wait on a full fracture every time, yet the preview must not drift from the final result.">难点：选形阶段不能每次都等完整断裂，又不能让预览与最终结果脱节。</li><li data-zh="性能：75.9 万面柱体，首次预览 0.097 秒，之后约 0.006 秒；真实断裂需要 3.3–5.0 秒。" data-en="Performance: on a 759k-face pillar the first preview takes 0.097 s and later ones about 0.006 s; a real fracture takes 3.3–5.0 s.">性能：75.9 万面柱体，首次预览 0.097 秒，之后约 0.006 秒；真实断裂需要 3.3–5.0 秒。</li><li data-zh="验证：预览与真实断裂的区域归属匹配超过 99.98%。" data-en="Validation: preview and real fracture agree on region assignment for over 99.98% of faces.">验证：预览与真实断裂的区域归属匹配超过 99.98%。</li></ul>
+    </div>
+    <div class="doc-fig" data-img="AssetLibrary/Ruinify/Ruinify_03.png"><div class="doc-ph"><strong data-zh="Fracture 预览、真实断裂与断面细节" data-en="Fracture preview, real fracture and interior detail">Fracture 预览、真实断裂与断面细节</strong></div></div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="Large Damage 区域缺损" data-en="Large Damage">Large Damage 区域缺损</h3>
+      <p data-zh="在分离前的坐标上计算区域场，写入连续的浮点遮罩；再用遮罩与深度、细节噪声修改原模型的 SDF，生成磨损包络，最后与原始高精度几何求交，只在需要的地方“咬”掉材料。" data-en="A region field is computed on the pre-separation coordinates and written to a continuous float mask; the mask, depth and detail noise then modify the model’s SDF to build a wear envelope, which is intersected with the original high-res geometry so material is only bitten away where needed.">在分离前的坐标上计算区域场，写入连续的浮点遮罩；再用遮罩与深度、细节噪声修改原模型的 SDF，生成磨损包络，最后与原始高精度几何求交，只在需要的地方“咬”掉材料。</p>
+      <ul><li data-zh="难点：遮罩在体积内被整数边界截断，区域看起来正确、几何却不变；改成显式 float 后才真正生效。" data-en="Challenge: the mask was being truncated by integer clamping inside the volume — the region looked right but the geometry didn’t change; explicit float types fixed it.">难点：遮罩在体积内被整数边界截断，区域看起来正确、几何却不变；改成显式 float 后才真正生效。</li><li data-zh="放弃的方案：球形切割体 Boolean、保护面拼回（新增 1,563 条边界边）、表层二次 Voronoi 破碎（约 64 秒，无法交互）。" data-en="Dropped approaches: spherical cutter Booleans, stitching protected faces back (added 1,563 boundary edges), and surface re-fracture with Voronoi (about 64 s, not interactive).">放弃的方案：球形切割体 Boolean、保护面拼回（新增 1,563 条边界边）、表层二次 Voronoi 破碎（约 64 秒，无法交互）。</li></ul>
+    </div>
+    <div class="doc-fig" data-img="AssetLibrary/Ruinify/Ruinify_04.png"><div class="doc-ph"><strong data-zh="Large Damage 区域与深度控制" data-en="Large Damage region and depth control">Large Damage 区域与深度控制</strong></div></div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="Edge Damage 表面风化" data-en="Edge Damage">Edge Damage 表面风化</h3>
+      <p data-zh="用 Houdini 原生 SOP 与 VEX 重建磨损包络：VDB 重建 → 显式邻域平滑 → 五层噪声沿法线位移 → 再次体素化闭合 → 与输入模型求交。" data-en="Built natively with Houdini SOPs and VEX: VDB rebuild → explicit neighbor smoothing → five-octave noise displaced along normals → re-voxelize to close → intersect with the input.">用 Houdini 原生 SOP 与 VEX 重建磨损包络：VDB 重建 → 显式邻域平滑 → 五层噪声沿法线位移 → 再次体素化闭合 → 与输入模型求交。</p>
+      <ul><li data-zh="难点：位移会让包络自相交，所以求交前必须再体素化一次，不使用全局 Fuse。" data-en="Challenge: displacement makes the envelope self-intersect, so it is re-voxelized before intersecting, with no global Fuse.">难点：位移会让包络自相交，所以求交前必须再体素化一次，不使用全局 Fuse。</li><li data-zh="平滑用 VEX 公式显式实现，行为可检查，不依赖不同节点里同名参数的含义。" data-en="Smoothing is an explicit VEX formula, so its behavior can be inspected instead of relying on same-named parameters in different nodes.">平滑用 VEX 公式显式实现，行为可检查，不依赖不同节点里同名参数的含义。</li><li data-zh="已知耦合：Voxel Size 同时影响精度、位移幅度和平滑迭代数。" data-en="Known coupling: Voxel Size affects precision, displacement amount and smoothing iterations at once.">已知耦合：Voxel Size 同时影响精度、位移幅度和平滑迭代数。</li></ul>
+    </div>
+    <div class="doc-fig" data-img="AssetLibrary/Ruinify/Ruinify_05.png"><div class="doc-ph"><strong data-zh="Edge Damage 局部效果与内部方法" data-en="Edge Damage close-ups and internals">Edge Damage 局部效果与内部方法</strong></div></div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="资产输出" data-en="Asset Output">资产输出</h3>
+      <ul><li data-zh="累积标记所有新增面，只对新增面做 UV Autoseam → Flatten → Layout 并赋予新材质，原面 UV 与材质保持不变（原面 UV 改变量为零）。" data-en="All new faces are tagged cumulatively; only they go through UV Autoseam → Flatten → Layout and receive a new material, while original faces keep their UVs and materials (original UV delta is zero).">累积标记所有新增面，只对新增面做 UV Autoseam → Flatten → Layout 并赋予新材质，原面 UV 与材质保持不变（原面 UV 改变量为零）。</li><li data-zh="按真实连通块识别碎片，选择后独立 Pack，而不是依赖碎块名称。" data-en="Pieces are identified by true connectivity, then selected and packed individually, rather than relying on piece names.">按真实连通块识别碎片，选择后独立 Pack，而不是依赖碎块名称。</li><li data-zh="Unreal 中通过 Save As New Mesh 把选中的碎块另存为独立 Static Mesh，不覆盖源资产。" data-en="In Unreal, Save As New Mesh saves the selected pieces as separate Static Meshes without overwriting the source asset.">Unreal 中通过 Save As New Mesh 把选中的碎块另存为独立 Static Mesh，不覆盖源资产。</li></ul>
+    </div>
+    <div class="doc-fig" data-img="AssetLibrary/Ruinify/Ruinify_06.png"><div class="doc-ph"><strong data-zh="新增断面 UV、材质与 Unreal 独立输出" data-en="New-face UVs, materials and standalone Unreal output">新增断面 UV、材质与 Unreal 独立输出</strong></div></div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="Damage 的方案探索与取舍" data-en="Damage: Approaches and Trade-offs">Damage 的方案探索与取舍</h3>
+      <p data-zh="在确定当前流程之前，我试过三套破损方案，分别评估计算成本、形态控制和区域约束能力。" data-en="Before settling on the current pipeline, I tried three damage approaches and evaluated each on compute cost, shape control and area constraint.">在确定当前流程之前，我试过三套破损方案，分别评估计算成本、形态控制和区域约束能力。</p>
+      <ul><li data-zh="Labs Edge Damage：因计算耗时排除。高精度柱体上两块模型的磨损与属性恢复约 45.55 秒，开销主要在内部网格重建，反复调节要等太久，不符合交互目标。" data-en="Labs Edge Damage: ruled out for compute time. On a high-res pillar, wear and attribute recovery for two pieces took about 45.55 s, mostly in internal remeshing — too slow for iterative tuning.">Labs Edge Damage：因计算耗时排除。高精度柱体上两块模型的磨损与属性恢复约 45.55 秒，开销主要在内部网格重建，反复调节要等太久，不符合交互目标。</li><li data-zh="局部表层二次破碎：未达到交互效率。在断面附近建遮罩、分离表层，再做 Voronoi 破碎、聚类与整簇删除。能得到有碎片结构的剥落，但两个主体的 Voronoi 阶段合计约 64 秒，且有悬浮小片和拓扑质量问题。" data-en="Local surface re-fracture: not interactive enough. A mask near the break surface separates a skin layer, which is Voronoi-fractured, clustered and deleted by cluster. It produces flaking with real fragment structure, but the Voronoi stage alone took about 64 s for two pieces, with floating slivers and unresolved topology issues.">局部表层二次破碎：未达到交互效率。在断面附近建遮罩、分离表层，再做 Voronoi 破碎、聚类与整簇删除。能得到有碎片结构的剥落，但两个主体的 Voronoi 阶段合计约 64 秒，且有悬浮小片和拓扑质量问题。</li><li data-zh="噪声切割体布尔减法：区域控制有局限。在遮罩区域放置带噪声的球形切割体做 Boolean 减法，能直接生成崩损，但切割范围仍会越出遮罩，无法严格保护区域。" data-en="Noisy cutter Boolean subtraction: limited area control. Noisy spheres placed in the mask and Boolean-subtracted give direct chips, but the cuts can extend past the mask, so protected areas can’t be guaranteed.">噪声切割体布尔减法：区域控制有局限。在遮罩区域放置带噪声的球形切割体做 Boolean 减法，能直接生成崩损，但切割范围仍会越出遮罩，无法严格保护区域。</li></ul>
+      <p data-zh="这三次探索明确了设计重点：在可接受的计算成本内，提供稳定、直观的破损控制。最终把大块缺损与细部风化拆开，分别由区域驱动的 Large Damage 和 Houdini 原生 Edge Damage 实现。" data-en="These explorations set the design focus: stable, intuitive damage control at an acceptable compute cost. The final pipeline separates large loss from fine weathering, handled by the region-driven Large Damage and the Houdini-native Edge Damage.">这三次探索明确了设计重点：在可接受的计算成本内，提供稳定、直观的破损控制。最终把大块缺损与细部风化拆开，分别由区域驱动的 Large Damage 和 Houdini 原生 Edge Damage 实现。</p>
+    </div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="性能" data-en="Performance">性能</h3>
+      <p data-zh="先定位成本，再调整交互结构。早期等待来自真实断裂、内部细节和 Labs 内部重划网格：一块 Edge Damage 约 31.79 秒，其中重划网格就占约 20.29 秒。" data-en="Find the cost first, then restructure the interaction. Early waits came from real fracture, interior detail and Labs’ internal remeshing: one Edge Damage block took about 31.79 s, of which remeshing alone took about 20.29 s.">先定位成本，再调整交互结构。早期等待来自真实断裂、内部细节和 Labs 内部重划网格：一块 Edge Damage 约 31.79 秒，其中重划网格就占约 20.29 秒。</p>
+      <ul><li data-zh="预览与确认生成分离：选形时只更新区域归属，不触发实际切割。" data-en="Preview and confirmed generation are separated: shape selection only updates region assignment, with no real cut.">预览与确认生成分离：选形时只更新区域归属，不触发实际切割。</li><li data-zh="利用 SOP 依赖缓存：输入不变时复用采样体积；只改 Edge Seed 时复用上游 VDB。" data-en="SOP dependency caching: sampling volumes are reused when the input is unchanged, and upstream VDBs are reused when only the Edge Seed changes.">利用 SOP 依赖缓存：输入不变时复用采样体积；只改 Edge Seed 时复用上游 VDB。</li><li data-zh="Large / Edge 对分离后的碎块整体处理，不再逐块维护同一套网络。" data-en="Large / Edge process the separated pieces as one, instead of maintaining the same network per piece.">Large / Edge 对分离后的碎块整体处理，不再逐块维护同一套网络。</li><li data-zh="深度为零、Relax 为零或模块关闭时直接旁路。" data-en="Zero depth, zero Relax or a disabled module simply bypasses the work.">深度为零、Relax 为零或模块关闭时直接旁路。</li><li data-zh="实测（400 面样例，三模块全开）：4.47 秒；只改 Edge Seed：约 1.69 秒。" data-en="Measured (400-face sample, all three modules on): 4.47 s; changing only the Edge Seed: about 1.69 s.">实测（400 面样例，三模块全开）：4.47 秒；只改 Edge Seed：约 1.69 秒。</li><li data-zh="并非越粗越快：Voxel Size 0.004 → 0.006 m 仅从 45.55 秒降到 38.67 秒，却改变了小尺度磨损，所以没有作为默认设置。" data-en="Coarser isn’t always better: Voxel Size 0.004 → 0.006 m only cut 45.55 s to 38.67 s while changing small-scale wear, so it wasn’t made the default.">并非越粗越快：Voxel Size 0.004 → 0.006 m 仅从 45.55 秒降到 38.67 秒，却改变了小尺度磨损，所以没有作为默认设置。</li></ul>
+    </div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="验证与边界" data-en="Validation and Limits">验证与边界</h3>
+      <ul><li data-zh="两块 / 五块样例在各开关组合下均为 0 开放边、0 非流形边；独立 HDA 与现场输出的 P / UV 哈希一致。" data-en="Two- and five-piece samples show 0 open edges and 0 non-manifold edges across switch combinations; the standalone HDA and in-session output have identical P / UV hashes.">两块 / 五块样例在各开关组合下均为 0 开放边、0 非流形边；独立 HDA 与现场输出的 P / UV 哈希一致。</li><li data-zh="Unreal 输出在 Cube 样例上验证：3 个独立网格保留各自材质槽，两次另存得到 6 个不同资产。" data-en="Unreal output was verified on a Cube sample: 3 standalone meshes keep their material slots, and two saves produced 6 distinct assets.">Unreal 输出在 Cube 样例上验证：3 个独立网格保留各自材质槽，两次另存得到 6 个不同资产。</li><li data-zh="已知问题：三块 / Seed 302 仍有 528 条开放边、3 条非流形边，保留为回归目标。" data-en="Known issue: the three-piece / Seed 302 case still has 528 open edges and 3 non-manifold edges, kept as a regression target.">已知问题：三块 / Seed 302 仍有 528 条开放边、3 条非流形边，保留为回归目标。</li><li data-zh="当前为内部开发原型，复杂输入的几何稳健性仍在完善。" data-en="This is an internal development prototype; geometric robustness on complex inputs is still being improved.">当前为内部开发原型，复杂输入的几何稳健性仍在完善。</li></ul>
+    </div>
+    <div class="gallery-text">
+      <h3 class="gallery-heading" data-zh="后续方向" data-en="Next Steps">后续方向</h3>
+      <ul><li data-zh="拓扑稳健性：以失败种子建立回归集" data-en="Topology robustness: build a regression set from failing seeds">拓扑稳健性：以失败种子建立回归集</li><li data-zh="碎屑识别：区分原有雕饰与损伤碎片" data-en="Debris detection: tell original ornament from damage fragments">碎屑识别：区分原有雕饰与损伤碎片</li><li data-zh="参数解耦：把 Edge 位移幅度与 Voxel Size 分开" data-en="Parameter decoupling: separate Edge displacement from Voxel Size">参数解耦：把 Edge 位移幅度与 Voxel Size 分开</li><li data-zh="完整性能基准与复杂资产测试" data-en="Full performance benchmarks and complex-asset tests">完整性能基准与复杂资产测试</li></ul>
+    </div>
+
+  </div>
+
+  <div class="project-back">
+    <a class="btn-outline" href="portfolio.html" data-zh="返回作品集" data-en="Back to Portfolio">返回作品集</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <span data-zh="© 2026 邢凡辰 · 保留所有权利" data-en="© 2026 Fanchen Xing · All Rights Reserved">© 2026 邢凡辰 · 保留所有权利</span>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/ruinify.js"></script>
+</body>
+</html>
